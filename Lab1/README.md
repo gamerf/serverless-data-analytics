@@ -25,7 +25,8 @@ Amazon Athena uses Apache Hive to define tables and create databases. Databases 
 
 1. Open the [AWS Management Console for Athena](https://console.aws.amazon.com/athena/home).
 2. If this is your first time visiting the AWS Management Console for Athena, you will get a Getting Started page. Choose **Get Started** to open the Query Editor. If this isn't your first time, the Athena **Query Editor** opens.
-3. Make a note of the AWS region name, for example, for this lab you will need to choose the **US West (Oregon)** region.
+3. Make a note of the AWS region name, for example, for this lab you will need to choose the **Ireland** region.
+4. Before you run your first query, you need to **set up a query result location in Amazon S3**
 4. In the Athena **Query Editor**, you will see a query pane with an example query. Now you can start entering your query in the query pane.
 5. To create a database named *mydatabase*, copy the following statement, and then choose **Run Query**:
 
