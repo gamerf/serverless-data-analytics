@@ -48,7 +48,7 @@ Now that you have a database, you are ready to create a table that is based on t
 >-	If the data is encrypted in Amazon S3, it must be in the same region, and the user or principal who creates the table must have the appropriate permissions to decrypt the data. For more information, refer [Configuring Encryption Options](http://docs.aws.amazon.com/athena/latest/ug/encryption.html).
 >-	Athena does not support different storage classes within the bucket specified by the LOCATION clause, does not support the GLACIER storage class, and does not support Requester Pays buckets. For more information, see [Storage Classes](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html),[Changing the Storage Class of an Object in Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/ChgStoClsOfObj.html), and [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the Amazon Simple Storage Service Developer Guide.
 
-1. Ensure that current AWS region is **US West (Oregon)** region
+1. Ensure that current AWS region is **Ireland** region
 2. Ensure **mydatabase** is selected from the **DATABASE** list and then choose **New Query**.
 3. In the query pane, copy the following statement to create TaxiDataYellow table, and then choose **Run Query**:
 
@@ -135,7 +135,7 @@ By partitioning your data, you can restrict the amount of data scanned by each q
 
 ### Create a Table with Partitions
 
-1. Ensure that current AWS region is **US West (Oregon)** region
+1. Ensure that current AWS region is **Ireland** region
 
 2. Ensure **mydatabase** is selected from the DATABASE list and then choose **New Query**.
 
@@ -279,7 +279,7 @@ Results for the above query look like the following:
 
 A view in Amazon Athena is a logical, not a physical table. The query that defines a view runs each time the view is referenced in a query. You can create a view from a SELECT query and then reference this view in future queries. For more information, see [CREATE VIEW](https://docs.aws.amazon.com/athena/latest/ug/create-view.html).
 
-1. Ensure that current AWS region is **US West (Oregon)** region
+1. Ensure that current AWS region is **Ireland** region
 
 2. Ensure **mydatabase** is selected from the DATABASE list.
  
@@ -327,7 +327,7 @@ Create copies of existing tables that contain only the data you need.
 
 3. In the **Create Bucket** pop-up page, input a unique **Bucket name**. So it’s advised to choose a large bucket name, with many random characters and numbers (no spaces). 
 
-    1. Select the region as **Oregon**. 
+    1. Select the region as **Ireland**. 
     2. Click **Next** to navigate to next tab. 
     3. In the **Set properties** tab, leave all options as default. 
     4. In the **Set permissions** tag, leave all options as default.
@@ -337,7 +337,7 @@ Create copies of existing tables that contain only the data you need.
 
 ### Repartitioning the dataset using CTAS Query 
 
-1. Ensure that current AWS region is **US West (Oregon)** region
+1. Ensure that current AWS region is **Ireland** region
 
 2. Ensure **mydatabase** is selected from the DATABASE list.
  
