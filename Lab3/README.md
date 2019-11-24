@@ -13,7 +13,7 @@
 
 ## Create an IAM Role
 
-Create an IAM role that has permission to your Amazon S3 sources, targets, temporary directory, scripts, **AWSGlueServiceRole** and any libraries used by the job. You can click [here](https://console.aws.amazon.com/iam/home?region=us-west-2#/roles) to create a new role. For additional documentation to create a role click [here](docs.aws.amazon.com/cli/latest/reference/iam/create-role.html).
+Create an IAM role that has permission to your Amazon S3 sources, targets, temporary directory, scripts, **AWSGlueServiceRole** and any libraries used by the job. You can click [here](https://console.aws.amazon.com/iam/home?region=eu-west-1#/roles) to create a new role. For additional documentation to create a role click [here](docs.aws.amazon.com/cli/latest/reference/iam/create-role.html).
 
 1. On the IAM page, click on **Create Role**.
 2. Choose the service as **Glue** and click on **Next: Permissions** on the bottom.
@@ -29,14 +29,14 @@ Create an IAM role that has permission to your Amazon S3 sources, targets, tempo
 6. Enter Role name as 
 
 ```
-nycitytaxianalysis-reinv
+nycitytaxianalysis
 ```
 
 ​	and click **Create role**.
 
 ## Create an Amazon S3 bucket
 
-1. Open the [AWS Management console for Amazon S3](https://s3.console.aws.amazon.com/s3/home?region=us-west-2)
+1. Open the [AWS Management console for Amazon S3](https://s3.console.aws.amazon.com/s3/home?region=eu-west-1)
 2. On the S3 Dashboard, Click on **Create Bucket**. 
 
 ![createbucket.png](https://s3.amazonaws.com/us-east-1.data-analytics/labcontent/reinvent2017content-abd313/lab1/createbucket.png)
@@ -44,12 +44,12 @@ nycitytaxianalysis-reinv
 1. In the **Create Bucket** pop-up page, input a unique **Bucket name**. So it’s advised to choose a large bucket name, with many random characters and numbers (no spaces). It will be easier to name your bucket
 
    ```
-   aws-glue-scripts-<YOURAWSACCOUNTID>-us-west-2
+   aws-glue-scripts-<YOURAWSACCOUNTID>-eu-west-2
    ```
 
    and it would be easier to choose/select this bucket for the remainder of this Lab3. 
 
-   1. Select the region as **Oregon**. 
+   1. Select the region as **Ireland**. 
    2. Click **Next** to navigate to the next tab. 
    3. In the **Set properties** tab, leave all options as default. 
    4. In the **Set permissions** tag, leave all options as default.
@@ -63,9 +63,9 @@ nycitytaxianalysis-reinv
 
 During this workshop, we will focus on one month of the New York City Taxi Records dataset, however you could easily do this for the entire eight years of data. As you crawl this unknown dataset, you discover that the data is in different formats, depending on the type of taxi. You then convert the data to a canonical form, start to analyze it, and build a set of visualizations. All without launching a single server.
 
-> For this lab, you will need to choose the **US West (Oregon)** region. 
+> For this lab, you will need to choose the **Ireland** region. 
 
-1. Open the [AWS Management console for Amazon Glue](https://us-west-2.console.aws.amazon.com/glue/home?region=us-west-2#). 
+1. Open the [AWS Management console for Amazon Glue](https://eu-west-1.console.aws.amazon.com/glue/home?region=eu-west-1#). 
 
 2. To analyze all the taxi rides for January 2016, you start with a set of data in S3. First, create a database for this workshop within AWS Glue. A database is a set of associated table definitions, organized into a logical group. In Athena, database names are all lowercase, no matter what you type.
 
@@ -75,7 +75,7 @@ During this workshop, we will focus on one month of the New York City Taxi Recor
 
    ii. Click on the **Add Database** button. 
 
-   iii. Enter the Database name as **nycitytaxianalysis-reinv17**. You can skip the description and location fields and click on **Create**. 
+   iii. Enter the Database name as **nycitytaxianalysis**. You can skip the description and location fields and click on **Create**. 
 
 3. Click on **Crawlers** under Data Catalog column on the left. 
 
@@ -83,7 +83,7 @@ During this workshop, we will focus on one month of the New York City Taxi Recor
 
    i. Click on **Add Crawler** button. 
 
-   ii. Under Add information about your crawler, for Crawler name type **nycitytaxianalysis-crawler-reinv17**. You can skip the Description and Classifiers field and click on **Next**. 
+   ii. Under Add information about your crawler, for Crawler name type **nycitytaxianalysis-crawler**. You can skip the Description and Classifiers field and click on **Next**. 
 
    iii. Under Specify crawler source type, make sure **Data stores** is selected. Click **Next**. 
 
@@ -98,16 +98,16 @@ During this workshop, we will focus on one month of the New York City Taxi Recor
    vi. For Choose an IAM Role, select **Create an IAM role** and enter the role name as following and click on **Next**.
 
    ```
-   nycitytaxianalysis-reinv17-crawler
+   nycitytaxianalysis-crawler
    ```
 
    vii. For Create a schedule for this crawler, choose Frequency as **Run on Demand** and click on **Next**.
 
    viii. Configure the crawler output database and prefix:
 
-   ​	a. For **Database**, select the database created earlier, **nycitytaxianalysis-reinv17**.
+   ​	a. For **Database**, select the database created earlier, **nycitytaxianalysis**.
 
-   ​	b. For **Prefix added to tables (optional)**, type **reinv17_** and click on **Next**.
+   ​	b. For **Prefix added to tables (optional)**, type **lab_** and click on **Next**.
 
    ​	c. Review configuration and click on **Finish** and on the next page, click on **Run it now** in the green box on the top. 
 
@@ -117,11 +117,11 @@ During this workshop, we will focus on one month of the New York City Taxi Recor
 
 4. Click on **Tables** under Data Catalog on the left column. 
 
-5. If you look under **Tables**, you can see the three new tables that were created under the database nycitytaxianalysis-reinv17.
+5. If you look under **Tables**, you can see the three new tables that were created under the database nycitytaxianalysis.
 
    ![glue4](https://s3.amazonaws.com/us-east-1.data-analytics/labcontent/reinvent2017content-abd313/lab3/glue_4.PNG)
 
-6. The crawler used the built-in classifiers and identified the tables as CSV, inferred the columns/data types, and collected a set of properties for each table. If you look in each of those table definitions, you see the number of rows for each dataset found and that the columns don’t match between tables. As an example, clicking on the reinv17_yellow table, you can see the yellow dataset for January 2017 with 8.7 million rows, the location on S3, and the various columns found.
+6. The crawler used the built-in classifiers and identified the tables as CSV, inferred the columns/data types, and collected a set of properties for each table. If you look in each of those table definitions, you see the number of rows for each dataset found and that the columns don’t match between tables. As an example, clicking on the lab_yellow table, you can see the yellow dataset for January 2017 with 8.7 million rows, the location on S3, and the various columns found.
 
    ![glue5](https://s3.amazonaws.com/us-east-1.data-analytics/labcontent/reinvent2017content-abd313/lab3/glue_5.PNG)
 
@@ -129,17 +129,17 @@ During this workshop, we will focus on one month of the New York City Taxi Recor
 
 Create an ETL job to move this data into a query-optimized form. You convert the data into a column format, changing the storage type to Parquet, and writing the data to a bucket that you own.
 
-1. Open the [AWS Management console for Amazon Glue](https://us-west-2.console.aws.amazon.com/glue/home?region=us-west-2#). 
+1. Open the [AWS Management console for Amazon Glue](https://eu-west-1.console.aws.amazon.com/glue/home?region=eu-west-1#). 
 
 2. Click on **Jobs** under ETL on the left column and then click on the **Add Job** button. 
 
-3. Under Job properties, input name as **nycitytaxianalysis-reinv17-yellow**. Since we will be working with only the yellow dataset for this workshop.
+3. Under Job properties, input name as **nycitytaxianalysis-lab-yellow**. Since we will be working with only the yellow dataset for this workshop.
 
-   i. Under  IAM Role, Choose the IAM role created at the beginning of this lab which should be named **nycitytaxianalysis-reinv**. 
+   i. Under  IAM Role, Choose the IAM role created at the beginning of this lab which should be named **nycitytaxianalysis**. 
 
    x. Under This job runs, choose the radio button for **A proposed script generated by AWS Glue**.
 
-   xi. For Script file name, enter **nycitytaxianalysis-reinv17-yellow**.
+   xi. For Script file name, enter **nycitytaxianalysis-lab-yellow**.
 
    > For this workshop, we are only working on the yellow dataset. Feel free to run through these steps to also convert the green and FHV dataset. 
 
@@ -159,7 +159,7 @@ Create an ETL job to move this data into a query-optimized form. You convert the
 
 4. Click **Next**.
 
-5. Under Choose your data sources, select **reinv17_yellow** table as the data source and click on **Next**.
+5. Under Choose your data sources, select **lab_yellow** table as the data source and click on **Next**.
 
 6. Under Choose a transform type, make sure **Change schema** is selected and click on **Next**. 
 
@@ -205,17 +205,17 @@ Create an ETL job to move this data into a query-optimized form. You convert the
 
 In regions where AWS Glue is supported, Athena uses the AWS Glue Data Catalog as a central location to store and retrieve table metadata throughout an AWS account. The Athena execution engine requires table metadata that instructs it where to read data, how to read it, and other information necessary to process the data. The AWS Glue Data Catalog provides a unified metadata repository across a variety of data sources and data formats, integrating not only with Athena, but with Amazon S3, Amazon RDS, Amazon Redshift, Amazon Redshift Spectrum, Amazon EMR, and any application compatible with the Apache Hive metastore.
 
-1. Open the [AWS Management console for Amazon Athena](https://us-west-2.console.aws.amazon.com/athena/home?force&region=us-west-2). 
+1. Open the [AWS Management console for Amazon Athena](https://eu-west-1.console.aws.amazon.com/athena/home?force&region=eu-west-1). 
 
-   > Ensure you are in the **US West (Oregon)** region. 
+   > Ensure you are in the **Ireland** region. 
 
-2. Under Database, you should see the database **nycitytaxianalysis-reinv17** which was created during the previous section. 
+2. Under Database, you should see the database **nycitytaxianalysis** which was created during the previous section. 
 
 3. Click on **Create Table** right below the drop-down for Database and click on **From AWS Glue Crawler**. Click **Continue**. 
 
 4. You will now be re-directed to the AWS Glue console to set up a crawler. The crawler connects to your data store and automatically determines its structure to create the metadata for your table.
 
-5. Enter Crawler name as **nycitytaxianalysis-crawlerparquet-reinv17** and Click **Next**.
+5. Enter Crawler name as **nycitytaxianalysis-crawlerparquet** and Click **Next**.
 
 6. Under Specify crawler source type, make sure **Data stores** is selected. Hit **Next** and on the next page, select the Data store as **S3**.
 
@@ -227,21 +227,21 @@ In regions where AWS Glue is supported, Athena uses the AWS Glue Data Catalog as
 
 9. In Add another data store, choose **No** and click on **Next**.
 
-10. For Choose an IAM role, select Choose an existing IAM role, and in the drop-down pick the role made in the previous section which should look similar to **AWSGlueServiceRole-nycitytaxianalysis-reinv17-crawler**. Click on **Next**.
+10. For Choose an IAM role, select Choose an existing IAM role, and in the drop-down pick the role made in the previous section which should look similar to **AWSGlueServiceRole-nycitytaxianalysis-crawler**. Click on **Next**.
 
 11. In Create a schedule for this crawler, pick frequency as **Run on demand** and click on **Next**.
 
-12. For Configure the crawler's output, Click **Add Database** to create a new database. Enter **nycitytaxianalysis-reinv17-parquet** as the database name and click **Create**. For Prefix added to tables, you can enter a prefix **parq_** and click **Next**.
+12. For Configure the crawler's output, Click **Add Database** to create a new database. Enter **nycitytaxianalysis-parquet** as the database name and click **Create**. For Prefix added to tables, you can enter a prefix **parq_** and click **Next**.
 
 13. Review the Crawler Info and click **Finish**. Click on **Run it Now?**. 
 
-14. Click on **Tables** on the left, and for database nycitytaxianalysis-reinv17-parquet you should see the table parq_target. Click on the table name and you will see the MetaData for this converted table. 
+14. Click on **Tables** on the left, and for database nycitytaxianalysis-parquet you should see the table parq_target. Click on the table name and you will see the MetaData for this converted table. 
 
-15. Open the [AWS Management console for Amazon Athena](https://us-west-2.console.aws.amazon.com/athena/home?force&region=us-west-2). 
+15. Open the [AWS Management console for Amazon Athena](https://eu-west-1.console.aws.amazon.com/athena/home?force&region=eu-west-1). 
 
-    > Ensure you are in the **US West (Oregon)** region. 
+    > Ensure you are in the **Ireland** region. 
 
-16. Under Database, you should see the database **nycitytaxianalysis-reinv17-parquet** which was just created. Select this database and you should see under Tables **parq_target**.
+16. Under Database, you should see the database **nycitytaxianalysis-parquet** which was just created. Select this database and you should see under Tables **parq_target**.
 
 17. In the query editor on the right, type
 
@@ -255,12 +255,12 @@ In regions where AWS Glue is supported, Athena uses the AWS Glue Data Catalog as
 
     What we see is the Run time and Data scanned numbers for Amazon Athena to **query and scan the parquet data**.
 
-18. Under Database, you should see the earlier made database **nycitytaxianalysis-reinv17** which was created in a previous section. Select this database and you should see under Tables **reinv17_yellow**. 
+18. Under Database, you should see the earlier made database **nycitytaxianalysis** which was created in a previous section. Select this database and you should see under Tables **lab_yellow**. 
 
 19. In the query editor on the right, type
 
     ```
-    select count(*) from reinv17_yellow;
+    select count(*) from lab_yellow;
     ```
 
     and take note the Run Time and Data scanned numbers here. 
@@ -276,7 +276,7 @@ In regions where AWS Glue is supported, Athena uses the AWS Glue Data Catalog as
 
 Now that you have successfully discovered and analyzed the dataset using Amazon Glue and Amazon Athena, you need to delete the resources created as part of this lab. 
 
-1. Open the [AWS Management console for Amazon Glue](https://us-west-2.console.aws.amazon.com/glue/home?region=us-west-2#). Ensure you are in the Oregon region (as part of this lab).
+1. Open the [AWS Management console for Amazon Glue](https://eu-west-1.console.aws.amazon.com/glue/home?region=eu-west-1#). Ensure you are in the Ireland region (as part of this lab).
 2. Click on **Databases** under Data Catalog column on the left. 
 3. Check the box for the Database that were created as part of this lab. Click on **Action** and select **Delete Database**. And click on **Delete**. This will also delete the tables under this database. 
 4. Click on **Crawlers** under Data Catalog column on the left. 
