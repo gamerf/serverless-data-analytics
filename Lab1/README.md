@@ -108,7 +108,7 @@ Results for the above query look like the following:
 ![athenacountquery-yelllowtaxi.png](https://s3.amazonaws.com/us-east-1.data-analytics/labcontent/reinvent2017content-abd313/lab1/athenacountquery-yelllowtaxi.png)
 
 >**Note:** 
-The current data format is CSV and this query is scanning **~207GB** of data and takes **~20.06** seconds to execute the query.
+The current data format is CSV and this query is scanning **~207GB** of data and takes **~2 minutes 9 seconds** seconds to execute the query.
 
 3. Make a note of query execution time for later comparison while querying the data set in Apache Parquet format. 
 
