@@ -44,7 +44,7 @@ nycitytaxianalysis
 1. In the **Create Bucket** pop-up page, input a unique **Bucket name**. So it’s advised to choose a large bucket name, with many random characters and numbers (no spaces). It will be easier to name your bucket
 
    ```
-   aws-glue-scripts-<YOURAWSACCOUNTID>-eu-west-2
+   aws-glue-scripts-<YOURAWSACCOUNTID>-eu-west-1
    ```
 
    and it would be easier to choose/select this bucket for the remainder of this Lab3. 
