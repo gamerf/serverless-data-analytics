@@ -12,7 +12,7 @@
     * [Visualize the data by hour of day for the month of January 2016](#visualize-the-data-by-hour-of-day-for-the-month-of-january-2016)
     * [Visualize the data for the month of January 2016 for all taxi types(yellow, green, fhv)](#visualize-the-data-for-the-month-of-january-2016-for-all-taxi-typesyellow-green-fhv)
 
-    
+
 
 ## Architectural Diagram
 ![architecture-overview-lab2.png](https://s3.amazonaws.com/us-east-1.data-analytics/labcontent/reinvent2017content-abd313/lab2/architecture-overview-lab2.png)
@@ -127,7 +127,7 @@ The returned result will contain information for the partitions that are added t
 
    ii. Enter a valid email for **Notification email address**.
 
-   iii. Just for this step, leave the **QuickSight capacity region** as **N.Virginia**. 
+   iii. Just for this step, leave the **QuickSight capacity region** as **Ireland**. 
 
    iv. Ensure that **Enable autodiscovery of your data and users in your Amazon Redshift, Amazon RDS and AWS IAM Services** and **Amazon Athena** boxes are checked. 
 
