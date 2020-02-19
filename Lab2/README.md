@@ -21,14 +21,14 @@
 ## Create an Amazon S3 bucket
 > Note: If you have already have an S3 bucket in your AWS Account you can skip this section. 
 
-1. Open the [AWS Management console for Amazon S3](https://s3.console.aws.amazon.com/s3/home?region=us-west-2)
+1. Open the [AWS Management console for Amazon S3](https://s3.console.aws.amazon.com/s3/home?region=eu-west-1)
 2. On the S3 Dashboard, Click on **Create Bucket**. 
 
 ![createbucket.png](https://s3.amazonaws.com/us-east-1.data-analytics/labcontent/reinvent2017content-abd313/lab1/createbucket.png)
 
 3. In the **Create Bucket** pop-up page, input a unique **Bucket name**. It is advised to choose a large bucket name, with many random characters and numbers (no spaces). 
 
-    1. Select the region as **Oregon**. 
+    1. Select the region as **Ireland**. 
     2. Click **Next** to navigate to next tab. 
     3. In the **Set properties** tab, leave all options as default. 
     4. In the **Set permissions** tag, leave all options as default.
@@ -46,7 +46,7 @@ Amazon Athena uses Apache Hive to define tables and create databases. Databases 
 
 1. In the **Create Bucket** pop-up page, input a unique **Bucket name**. It is advised to choose a large bucket name, with many random characters and numbers (no spaces). 
 
-    1. Select the region as **Oregon**. 
+    1. Select the region as **Ireland**. 
     2. Click **Next** to navigate to next tab. 
     3. In the **Set properties** tab, leave all options as default. 
     4. In the **Set permissions** tag, leave all options as default.
@@ -58,7 +58,7 @@ Amazon Athena uses Apache Hive to define tables and create databases. Databases 
 
 1. Open the [AWS Management Console for Athena](https://console.aws.amazon.com/athena/home).
 2. If this is your first time visiting the AWS Management Console for Athena, you will get a Getting Started page. Choose **Get Started** to open the Query Editor. If this isn't your first time, the Athena **Query Editor** opens.
-3. Make a note of the AWS region name, for example, for this lab you will need to choose the **US West (Oregon)** region.
+3. Make a note of the AWS region name, for example, for this lab you will need to choose the **EU West (Ireland)** region.
 4. In the Athena **Query Editor**, you will see a query pane with an example query. Now you can start entering your query in the query pane.
 5. To create a database named *mydatabase*, copy the following statement, and then choose **Run Query**:
 
@@ -72,7 +72,7 @@ Amazon Athena uses Apache Hive to define tables and create databases. Databases 
 
 ### Create a Table
 
-1. Ensure that current AWS region is **US West (Oregon)** region
+1. Ensure that current AWS region is **EU West 1 (Ireland)** region
 
 2. Ensure **mydatabase** is selected from the DATABASE list and then choose **New Query**.
 
